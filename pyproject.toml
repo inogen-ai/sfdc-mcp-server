@@ -1,0 +1,40 @@
+[project]
+name = "sfdc-mcp-server"
+version = "0.1.0"
+description = "Production-grade, read-only MCP server for Salesforce (SOQL queries, record reads, full-text search, and schema discovery)"
+requires-python = ">=3.11"
+license = "Apache-2.0"
+readme = "README.md"
+dependencies = [
+    "mcp>=1.2",
+    "anyio>=4.0",
+    "httpx>=0.27",
+    "pydantic-settings>=2.2",
+]
+
+[project.urls]
+Homepage = "https://github.com/inogen-ai/sfdc-mcp-server"
+Repository = "https://github.com/inogen-ai/sfdc-mcp-server"
+Issues = "https://github.com/inogen-ai/sfdc-mcp-server/issues"
+
+[project.scripts]
+sfdc-mcp-server = "sfdc_mcp.server:main"
+
+[dependency-groups]
+dev = [
+    "pytest>=8.2",
+    "ruff>=0.4",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/sfdc_mcp"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+markers = [
+    "integration: exercises the real server process over stdio against an in-process fake Salesforce REST API (no credentials, no real network; runs by default).",
+]
