@@ -31,18 +31,8 @@ credit card required.
 
     uvx sfdc-mcp-server
 
-That starts the server over stdio. Until `sfdc-mcp-server` is published to PyPI, run it
-from a local checkout instead:
-
-    uv run --directory <path-to-checkout> sfdc-mcp-server
-
-In practice you'll point an MCP client at it instead
+That starts the server over stdio. In practice you'll point an MCP client at it instead
 of running it directly — for Claude Code:
-
-**Note:** until `sfdc-mcp-server` is published to PyPI, replace `uvx sfdc-mcp-server`
-in the command below with the from-source form
-`uvx --from git+https://github.com/inogen-ai/sfdc-mcp-server sfdc-mcp-server` (see the
-run-from-checkout note above).
 
     claude mcp add salesforce -e SFDC_MCP_CLIENT_ID=<your-consumer-key> -- uvx sfdc-mcp-server
 
